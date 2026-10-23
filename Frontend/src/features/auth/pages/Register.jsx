@@ -59,7 +59,7 @@ export default function Register() {
           </div>
 
           <form onSubmit={onSubmit} className="auth-form">
-            <AuthInput label="Full name" id="reg-username" type="text" name="username" value={form.username} onChange={onChange} placeholder="John Doe" icon="person" />
+            <AuthInput label="Username" id="reg-username" type="text" name="username" value={form.username} onChange={onChange} placeholder="John_doe" icon="person" />
             <AuthInput label="Email address" id="reg-email" type="email" name="email" value={form.email} onChange={onChange} placeholder="you@example.com" icon="mail" />
             <AuthInput
               label="Password"
