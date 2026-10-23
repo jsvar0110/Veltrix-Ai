@@ -203,8 +203,8 @@ async function synthesizeWithVoxtral(text) {
 // call starts back at Gemini, so a later request "falls back to Gemini"
 // again on its own once Gemini's quota has recovered.
 const ttsChain = [
-  { name: "eleven_flash_v2_5", synth: (text) => synthesizeWithElevenLabs(text) },
   { name: "gemini-2.5-flash-preview-tts", synth: (text, voiceName) => synthesizeWithGemini(text, voiceName) },
+  { name: "eleven_flash_v2_5", synth: (text) => synthesizeWithElevenLabs(text) },
   {name : "voxtral-mini-tts-2603" , synth : (text) => synthesizeWithVoxtral(text) } ,
   { name: "hume-octave", synth: (text) => synthesizeWithHume(text) },
   { name: "fish-audio", synth: (text) => synthesizeWithFish(text) },
