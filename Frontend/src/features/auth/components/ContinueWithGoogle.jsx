@@ -3,6 +3,7 @@ import { API_URL } from "../../../config/api.js"
 export default function ContinueWithGoogle() {
 
     const handleGoogleLogin = () => {
+        localStorage.setItem("veltrix_session", "1");
         window.location.href =
             `${API_URL}/api/auth/google`;
     };

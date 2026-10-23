@@ -28,6 +28,7 @@ export function useAuth() {
             dispatch(setLoading(true))
             const data = await login({ email, password })
             dispatch(setUser(data.user))
+            localStorage.setItem("veltrix_session", "1")
         } catch (error) {
             dispatch(setError(error.response?.data.message || "Login failed"))
         } finally {
@@ -44,7 +45,11 @@ export function useAuth() {
             dispatch(setLoading(true))
             const data = await getMe()
             dispatch(setUser(data.user))
+            localStorage.setItem("veltrix_session", "1")
+
         } catch (error) {
+            if (error.response?.status === 401) localStorage.removeItem("veltrix_session")
+
             dispatch(setError(error.response?.data.message || "Failed to fetch your data"))
         } finally {
             dispatch(setLoading(false))
@@ -63,6 +68,7 @@ export function useAuth() {
         } catch (err) {
             console.log("logOut failed: ", err)
         } finally {
+            localStorage.removeItem("veltrix_session")
             dispatch(setUser(null))
             dispatch(setChats({}))
             dispatch(setCurrentChatId(null))

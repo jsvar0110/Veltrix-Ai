@@ -11,14 +11,19 @@ function App() {
 
   useEffect(() => {
 
-    auth.handleGetMe()
+    // wake the Render server in the background (fire and forget)
+    fetch(import.meta.env.VITE_API_URL, { mode: "no-cors" }).catch(() => { })
+
+    if (localStorage.getItem("veltrix_session")) {
+      auth.handleGetMe()
+    }
 
   }, [])
 
 
   return (
     <>
-      <RouterProvider router={router}/>
+      <RouterProvider router={router} />
     </>
   )
 }

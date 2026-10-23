@@ -4,7 +4,7 @@ const authSlice = createSlice({
     name : "auth" ,
     initialState : {
         user : null ,
-        loading : true ,
+        loading : !!localStorage.getItem("veltrix_session") ,
         error : null ,
     },
     reducers : {
